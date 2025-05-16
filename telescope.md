@@ -3,6 +3,7 @@
 - [Introduction](#introduction)
 - [Installation](#installation)
     - [Local Only Installation](#local-only-installation)
+    - [Global Installation](#global-installation)
     - [Configuration](#configuration)
     - [Data Pruning](#data-pruning)
     - [Dashboard Authorization](#dashboard-authorization)
@@ -42,6 +43,22 @@
 <a name="installation"></a>
 ## Installation
 
+<a name="local-only-installation"></a>
+### Local Only Installation
+
+If you plan to only use Telescope to assist your local development, you may install Telescope using the `--dev` flag:
+
+```shell
+composer require laravel/telescope --dev
+
+php artisan telescope:install
+
+php artisan migrate
+```
+
+<a name="global-installation"></a>
+### Global Installation
+
 You may use the Composer package manager to install Telescope into your Laravel project:
 
 ```shell
@@ -57,19 +74,6 @@ php artisan migrate
 ```
 
 Finally, you may access the Telescope dashboard via the `/telescope` route.
-
-<a name="local-only-installation"></a>
-### Local Only Installation
-
-If you plan to only use Telescope to assist your local development, you may install Telescope using the `--dev` flag:
-
-```shell
-composer require laravel/telescope --dev
-
-php artisan telescope:install
-
-php artisan migrate
-```
 
 After running `telescope:install`, you should remove the `TelescopeServiceProvider` service provider registration from your application's `bootstrap/providers.php` configuration file. Instead, manually register Telescope's service providers in the `register` method of your `App\Providers\AppServiceProvider` class. We will ensure the current environment is `local` before registering the providers:
 
